@@ -1,0 +1,42 @@
+<odoo>
+    <template id="external_layout_boxed" inherit_id="web.external_layout_boxed">
+        <!-- Formatting from bold copied here to boxed layout -->
+        <xpath expr="//div[@class='row mb8']" position="replace">
+            <div class="row">
+                <div class="col-6">
+                    <img t-if="company.logo" class="o_company_logo_big"
+                        t-att-src="image_data_uri(company.logo)" alt="Logo" />
+                </div>
+                <div class="col-5 offset-1" name="company_address">
+                    <ul class="list-unstyled" name="company_address_list">
+                        <li t-if="company.is_company_details_empty">
+                            <span t-field="company.partner_id"
+                                t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: true}">
+                                <div
+                                    class="bg-light border-1 rounded h-100 d-flex flex-column align-items-center justify-content-center p-4 w-100 opacity-75 text-muted text-center">
+                                    <strong>Company address block</strong>
+                                    <div>Contains the company address.</div>
+                                </div>
+                            </span>
+                        </li>
+                        <li t-else="">
+                            <span t-field="company.company_details" class="text-nowrap">
+                                <div
+                                    class="bg-light border-1 rounded h-100 d-flex flex-column align-items-center justify-content-center p-4 w-100 opacity-75 text-muted text-center">
+                                    <strong>Company details block</strong>
+                                    <div>Contains the company details.</div>
+                                </div>
+                            </span>
+                        </li>
+                        <li t-if="not forced_vat" />
+                        <li t-else="">
+                            <t t-esc="company.country_id.vat_label or 'Tax ID'">Tax ID</t>: <span
+                                t-esc="forced_vat">US12345671</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </xpath>
+
+    </template>
+</odoo>
