@@ -7,5 +7,5 @@
     "license": "OPL-1",
     "application": "False",
     "data": [],
-    "depends": ["stock", "purchase"],
+    "depends": ["stock"],
 }

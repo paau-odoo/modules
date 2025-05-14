@@ -1,5 +1,4 @@
-from odoo import api, fields, models
-from odoo.exceptions import UserError
+from odoo import api, models
 
 
 class StockMove(models.Model):
@@ -7,7 +6,6 @@ class StockMove(models.Model):
 
     @api.onchange("quantity")
     def _onchange_quantity_check(self):
-
         # Only do this on receipts
         if self.picking_id.picking_type_code == "incoming":
             # If the q is larger than demand, show the warning
