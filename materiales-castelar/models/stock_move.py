@@ -1,5 +1,4 @@
-from odoo import api, fields, models
-from odoo.exceptions import UserError
+from odoo import api, models
 
 
 class StockMove(models.Model):
