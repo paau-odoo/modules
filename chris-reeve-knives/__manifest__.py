@@ -6,6 +6,9 @@
     "author": "Austin Paskerian",
     "license": "OPL-1",
     "application": "False",
-    "data": ["views/sale_view_order_form.xml"],
+    "data": [
+        "views/saleorder_template.xml",
+        "views/ir_actions_report.xml",
+    ],
     "depends": ["sale_management"],
 }

@@ -23,10 +23,7 @@ class SaleOrder(models.Model):
                 lambda o: o.product_uom_qty != 0
             )
 
-    # I copied over the original _get_order_lines_to_report function and am overriding it to use my filtered compute field instead of order_line to populate the PDF report
-
-    # Another (probably better/ more DRY but more involved) approach could be to override the report xml to point to a custom function which calls & filters the results of the original _get_order_lines_to_report function
-    def _get_order_lines_to_report(self):
+    def _get_order_lines_to_report_filtered(self):
         down_payment_lines = self.order_line_filter.filtered(
             lambda line: line.is_downpayment
             and not line.display_type
