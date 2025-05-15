@@ -10,5 +10,4 @@ class SaleOrder(models.Model):
         orders = self.search([("validity_date", "<", today)])
 
         # Cancel those orders
-        for o in orders:
-            o["state"] = "cancel"
+        orders.write({"state": "cancel"})

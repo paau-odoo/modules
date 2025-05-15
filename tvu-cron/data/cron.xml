@@ -1,13 +1,13 @@
 <odoo>
     <record id="ir_cron_auto_cancel_quotation" model="ir.cron">
         <field name="name">Cancel expired quotations</field>
-        <field name="model_id" ref="sale.model_sale_order" />
+        <field name="model_id" ref="sale.model_sale_order"/>
         <field name="state">code</field>
         <field name="code">model._cron_auto_cancel()</field>
         <field name="interval_number">1</field>
         <field name="interval_type">days</field>
         <field name="numbercall">-1</field>
         <!-- I think this will do UTC midnight which I think the DB times are in -->
-        <field name="nextcall" eval="datetime.combine(datetime.today().date(), datetime.max.time())" />
+        <field name="nextcall" eval="datetime.combine(datetime.today().date(), datetime.max.time())"/>
     </record>
 </odoo>
