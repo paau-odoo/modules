@@ -7,5 +7,5 @@
     "license": "OPL-1",
     "application": "False",
     "data": ["views/res_partner.xml", "data/cron.xml"],
-    "depends": ["contacts"],
+    "depends": ["base"],
 }
