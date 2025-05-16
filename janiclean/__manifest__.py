@@ -6,7 +6,7 @@
     "author": "Austin Paskerian",
     "license": "OPL-1",
     "application": "False",
-    "depends": ["mail", "contacts", "hr", "sale_management"],
+    "depends": ["mail", "contacts", "hr"],
     "data": [
         "data/email_birthday.xml",
         "data/cron_birthday.xml",
