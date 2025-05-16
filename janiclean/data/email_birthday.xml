@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+        <record id="email_birthday" model="mail.template">
+            <field name="name">Birthday Email</field>
+            <field name="model_id" ref="hr.model_hr_employee"/>
+            <field name="email_from">
+                {{ object.company_id.name }}</field>
+            <field name="email_to">{{ object.work_email }}</field>
+            <field name="subject">Happy Birthday from
+                {{ object.company_id.name }}!</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px;">
+                        Hi valued employee,
+                    </p>
+
+                    <p style="margin: 0px; padding: 0px;">
+                        Happy birthday to you. Get back to work.
+                    </p>
+
+                </div>
+            </field>
+            <field name="lang">{{ object.lang }}</field>
+            <field name="auto_delete" eval="False"/>
+        </record>
+
+    </data>
+</odoo>
