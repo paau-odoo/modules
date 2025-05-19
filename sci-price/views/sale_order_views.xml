@@ -1,0 +1,17 @@
+<odoo>
+    <record id="inherit_sale_order_view_form_highlight" model="ir.ui.view">
+        <field name="name">sale.order.view.form.highlight.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field
+            name="arch" type="xml">
+            <!-- Change color of text based on if price has changed -->
+            <xpath expr='//field[@name="order_line"]//tree//field[@name="price_unit"]' position="replace">
+                <field name="price_changed" invisible="1"/>
+                <field name="price_unit" decoration-danger="price_changed"/>
+            </xpath>
+
+        </field>
+
+    </record>
+</odoo>
