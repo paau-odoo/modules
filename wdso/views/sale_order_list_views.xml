@@ -1,0 +1,38 @@
+<odoo>
+    <!-- Action -->
+    <record id="sale_order_line_tree_action" model="ir.actions.act_window">
+        <field name="name">SO Lines</field>
+        <field name="res_model">sale.order.line</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu item -->
+    <menuitem
+    id="sale_order_list_view_menu" name="SO Lines" groups="sales_team.group_sale_salesman" parent="sale.sale_menu_root" sequence="45" action="sale_order_line_tree_action"/>
+
+    <!-- Views -->
+    <record id="view_order_line_tree_inherit" model="ir.ui.view">
+        <field name="name">sale.order.line.tree.view.tree.inherit</field>
+        <field name="model">sale.order.line</field>
+        <field name="inherit_id" ref="sale.view_order_line_tree"/>
+        <field
+            name="arch" type="xml">
+            <!-- Add parent order date -->
+            <xpath expr="//field[@name='order_id']" position="before">
+                <field name="date"/>
+            </xpath>
+            <!-- Remove qty to invoice column -->
+            <xpath expr="//field[@name='qty_to_invoice']" position="replace"></xpath>
+            <!-- Add UOM col -->
+            <xpath expr="//field[@name='qty_invoiced']" position="after">
+                <field name="product_uom"/>
+            </xpath>
+            <!-- Add the new fields -->
+            <xpath expr="//field[@name='price_subtotal']" position="after">
+                <field name="price_unit" widget="monetary"/>
+                <field name="cost" widget="monetary"/>
+                <field name="profit" widget="monetary"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
