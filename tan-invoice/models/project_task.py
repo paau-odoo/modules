@@ -9,7 +9,7 @@ class Task(models.Model):
     delivery_date = fields.Date(string="Delivery date")
     invoice_number = fields.Many2one(comodel_name="account.move", string="Invoice")
 
-    @api.onchange("delivery_date")
+    @api.depends("delivery_date")
     def _onchange_delivery_date(self):
         # Trigger creating an invoice for billable tasks if a delivery date has been set, AND there is no prior associated invoice
         if self.sale_line_id and self.delivery_date and not self.invoice_number:
