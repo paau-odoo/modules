@@ -7,5 +7,5 @@
     "license": "OPL-1",
     "application": "False",
     "data": ["data/product_attribute.xml"],
-    "depends": ["sale_management"],
+    "depends": ["product"],
 }

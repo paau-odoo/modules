@@ -11,7 +11,6 @@ class ProductProduct(models.Model):
         products = super(
             ProductProduct, self.with_context(create_product_product=False)
         ).create(vals_list)
-        self.env.registry.clear_cache()
 
         # Change the reference codes for each unique types
         for p in products:
